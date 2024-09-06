@@ -3,7 +3,7 @@ import prisma from "../prisma";
 
 export default class AuthorContoller {
   async create(req: Request, res: Response) {
-    const { name, email, bio, cpf, contry, profileDescription } = req.body
+    const { name, email, bio, cpf, country, profileDescription } = req.body
 
     try {
       const emailExists = await prisma.author.findUnique({
@@ -28,7 +28,7 @@ export default class AuthorContoller {
           email,
           bio,
           cpf,
-          contry,
+          contry: country,
           profile: {
             create: profile
           }
